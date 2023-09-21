@@ -21,21 +21,21 @@ jobs:
       - name: Build and Deploy Frontend
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: 'src/frontend'
+          appSourcePath: '${{ github.workspace }}/icd-container-apps/src/frontend'
           acrName: icdregistry
           acrUsername: ${{ secrets.AZURE_USERNAME }}
           acrPassword: ${{ secrets.AZURE_PASSWORD }}
           containerAppName: ca-quotes
           resourceGroup: icd
-          containerAppEnvironment: my-test-container-app-env
+          containerAppEnvironment: managedEnvironment-icd-933b
           
       - name: Build and Deploy Quote Service
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: 'src/backend/QuoteService'
+          appSourcePath: '${{ github.workspace }}/icd-container-apps/src/backend/QuoteService'
           acrName: icdregistry
           acrUsername: ${{ secrets.AZURE_USERNAME }}
           acrPassword: ${{ secrets.AZURE_PASSWORD }}
           containerAppName: ca-quotes
           resourceGroup: icd
-          containerAppEnvironment: my-test-container-app-env
+          containerAppEnvironment: managedEnvironment-icd-933b
