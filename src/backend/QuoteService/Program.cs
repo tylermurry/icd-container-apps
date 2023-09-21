@@ -5,15 +5,15 @@ using QuoteService.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// builder.Services.AddOptions();
-// builder.Services.Configure<DataSourceOptions>(builder.Configuration.GetRequiredSection(nameof(DataSourceOptions)));
-//
-// builder.Services.AddOptions<DataSourceOptions>();
-// builder.Services.AddDbContext<DataContext>((services, context) =>
-// {
-//     var dataSourceOptions = services.GetService<IOptions<DataSourceOptions>>();
-//     context.UseSqlServer(dataSourceOptions?.Value.DataSourceString);
-// });
+builder.Services.AddOptions();
+builder.Services.Configure<DataSourceOptions>(builder.Configuration.GetRequiredSection(nameof(DataSourceOptions)));
+
+builder.Services.AddOptions<DataSourceOptions>();
+builder.Services.AddDbContext<DataContext>((services, context) =>
+{
+    var dataSourceOptions = services.GetService<IOptions<DataSourceOptions>>();
+    context.UseSqlServer(dataSourceOptions?.Value.DataSourceString);
+});
        
 builder.Services.AddCors(options =>
 {
