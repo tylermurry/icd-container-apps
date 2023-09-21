@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "VITE_QUOTE_SERVICE_BASE_URL=http://localhost:5226 vite",
     "dev-docker": "VITE_QUOTE_SERVICE_BASE_URL=http://localhost:5101 vite",
+    "dev-prod": "VITE_QUOTE_SERVICE_BASE_URL=https://ca-quotes-backend.salmondune-a3a5716f.southcentralus.azurecontainerapps.io vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
