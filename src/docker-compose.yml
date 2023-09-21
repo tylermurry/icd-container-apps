@@ -1,0 +1,61 @@
+version: '3.4'
+
+services:
+  
+  #################
+  # Frontend 
+  #################
+  
+  frontend:
+    container_name: "frontend"
+    image: ${DOCKER_REGISTRY-}frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-local
+    environment:
+      - VITE_QUOTE_SERVICE_BASE_URL=http://localhost:5101
+    ports:
+      - "5001:8080"
+    volumes:
+      - ./frontend/src:/app/src
+    networks:
+      - icd-container-apps
+
+  #################
+  # Quote Service
+  #################
+    
+  quoteservice:
+    container_name: "quoteservice"
+    image: ${DOCKER_REGISTRY-}quoteservice
+    build:
+      context: ./backend
+      dockerfile: QuoteService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5101:80"
+    depends_on:
+      - sqlserver
+    networks:
+      - icd-container-apps
+
+  ########################################################################################################
+  # --- Additional Services --- 
+  ########################################################################################################
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=myLocalPassword!
+    volumes:
+      - ./data:/var/opt/mssql
+    networks:
+      - icd-container-apps
+
+networks:
+  icd-container-apps:
