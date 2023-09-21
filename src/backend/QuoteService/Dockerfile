@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["QuoteService/QuoteService.csproj", "QuoteService/"]
+COPY ["src/backend/QuoteService/QuoteService.csproj", "QuoteService/"]
 RUN dotnet restore "QuoteService/QuoteService.csproj"
 COPY . .
 WORKDIR "/src/QuoteService"
