@@ -21,7 +21,7 @@ jobs:
       - name: Build and Deploy Frontend
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: '${{ github.workspace }}/icd-container-apps/src/frontend'
+          appSourcePath: '${{ github.workspace }}/src/frontend'
           acrName: icdregistry
           acrUsername: ${{ secrets.AZURE_USERNAME }}
           acrPassword: ${{ secrets.AZURE_PASSWORD }}
@@ -32,7 +32,7 @@ jobs:
       - name: Build and Deploy Quote Service
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: '${{ github.workspace }}/icd-container-apps/src/backend/QuoteService'
+          appSourcePath: '${{ github.workspace }}/src/backend/QuoteService'
           acrName: icdregistry
           acrUsername: ${{ secrets.AZURE_USERNAME }}
           acrPassword: ${{ secrets.AZURE_PASSWORD }}
