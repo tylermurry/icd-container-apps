@@ -33,7 +33,7 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: ${{ github.workspace }}src/frontend 
+          appSourcePath: ${{ github.workspace }}/icd-container-apps/src/frontend 
           registryUrl: icdregistry.azurecr.io
           registryUsername: ${{ secrets.CAQUOTESFRONTEND_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.CAQUOTESFRONTEND_REGISTRY_PASSWORD }}
