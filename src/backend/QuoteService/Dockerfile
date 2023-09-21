@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["backend/QuoteService/QuoteService.csproj", "backend/QuoteService/"]
-RUN dotnet restore "backend/QuoteService/QuoteService.csproj"
+COPY ["QuoteService/QuoteService.csproj", "QuoteService/"]
+RUN dotnet restore "QuoteService/QuoteService.csproj"
 COPY . .
-WORKDIR "/src/backend/QuoteService"
+WORKDIR "/src/QuoteService"
 RUN dotnet build "QuoteService.csproj" -c Release -o /app/build
 
 FROM build AS publish

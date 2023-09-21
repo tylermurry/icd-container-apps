@@ -8,7 +8,6 @@ on:
       [ master ]
     paths:
     - 'src/frontend/**'
-    - '.github/workflows/ca-quotes-frontend-AutoDeployTrigger-cbae86b9-baf1-4e14-8efc-c0e7c5fa7c93.yml'
 
   # Allow manual trigger 
   workflow_dispatch:      
