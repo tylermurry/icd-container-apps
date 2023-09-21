@@ -41,5 +41,3 @@ jobs:
           resourceGroup: icd
           imageToBuild: icdregistry.azurecr.io/ca-quotes-frontend:${{ github.sha }}
           dockerfilePath: Dockerfile
-
-
